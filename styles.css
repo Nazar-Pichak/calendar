@@ -1,0 +1,153 @@
+:root {
+    --primary-color: rgb(97, 97, 236);
+    --secondary-color: #cecccc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 10px;
+    border: 0.5px solid rgb(90, 87, 87);
+    background-color: var(--primary-color);
+    color: rgb(240, 231, 231);
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+body {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 5px;
+    background-image: url(./kyrie-kim-jqxB3C0YNG0-unsplash.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.clanek-kontejner {
+    width: 400px;
+    height: 408px;
+    transition: all 1s ease-out;
+}
+
+p {
+    font-size: 20px;
+    font-weight: bold; 
+    color: rgb(73, 71, 71);
+}
+
+table, td, th {
+    border: 0.01px solid rgb(90, 87, 87);
+    font-size: 15px;
+    font-weight: bold;
+}
+
+td {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    background: var(--secondary-color);
+    cursor: pointer;
+    transition: all 1s ease-out;
+}
+
+td:hover,
+td:focus {
+  background-color: #fff;
+  color: #333;
+}
+
+th {
+    background-color: var(--primary-color);
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
+    color: rgb(240, 231, 231);
+    cursor: pointer;
+}
+
+table {
+    border-collapse: collapse;
+    border: 0.5px solid rgb(90, 87, 87);
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    opacity: 0.93;
+}
+
+@media (min-width: 1350px) {
+    h1 {
+        font-size: 45px;
+    }
+
+    th, td {
+        width: 70px;
+        height: 70px;
+        font-size: 20px;
+    }
+
+    .clanek-kontejner {
+        height: 566px;
+    }
+
+    p {
+        font-size: 25px;
+    }
+}
+
+
+@media (max-width: 800px) {
+    th, td {
+        width: 40px;
+        height: 40px;
+    }
+
+    .clanek-kontejner {
+        height: 338px;
+    }
+
+    p {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 760px) {
+    body {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .clanek-kontejner {
+        width: 280px;
+        order: 2;
+    }
+}
+
+@media (max-width: 300px) {
+    h1 {
+        font-size: 25px;
+    }
+
+    th, td {
+        width: 35px;
+        height: 35px;
+    }
+
+    .clanek-kontejner {
+        width: 246px;
+        order: 2;
+    }
+
+    p {
+        padding: 4px;
+    }
+}
