@@ -1,65 +1,70 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let datum = new Date();
-    let aktualniRok = datum.getFullYear();
-    let aktualniMesic = datum.getMonth();
-    let aktualniDen = datum.getDate();
-    let pocetDniVMesici = new Date(aktualniRok, aktualniMesic + 1, 0).getDate();
+    let date = new Date();
+    let currentYear = date.getFullYear();
+    let currentMonth = date.getMonth();
+    let currentDay = date.getDate();
+    let daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
 
-    let prvniDenMesice = new Date(aktualniRok, aktualniMesic, 1).getDay();
+    let firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
 
-    let mesice = ['Leden', 'Únor', 'Březen', 'Duben', 'Květen', 'Červen', 'Červenec', 'Srpen', 'Září', 'Říjen', 'Listopad', 'Prosinec'];
-    let dniTydne = ['po', 'út', 'st', 'čt', 'pá', 'so', 'ne'];
+    let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    let daysOfWeek = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
-    let tabulkaProMesic = document.createElement('table');
-    let hlavicka = document.createElement('tr');
+    let tableForMonth = document.createElement('table');
+    let header = document.createElement('tr');
 
     for (let i = 0; i < 7; i++) {
-        bunka = document.createElement('th');
-        bunka.textContent = dniTydne[i];
-        hlavicka.appendChild(bunka);
+        let cell = document.createElement('th');
+        cell.textContent = daysOfWeek[i];
+        header.appendChild(cell);
     }
 
-    tabulkaProMesic.appendChild(hlavicka);
+    tableForMonth.appendChild(header);
 
     for (let i = 1; i <= 42; i++) {
 
         if (i % 7 === 1) {
-            radek = document.createElement('tr');
-            tabulkaProMesic.appendChild(radek);
+            var row = document.createElement('tr');
+            tableForMonth.appendChild(row);
         }
 
-        bunka = document.createElement('td');
+        let cell = document.createElement('td');
 
-        if (i >= prvniDenMesice && i < pocetDniVMesici + prvniDenMesice) {
-            bunka.textContent = i - prvniDenMesice + 1;
-            if (bunka.textContent == aktualniDen) {
-                bunka.style.backgroundColor = "rgb(97, 97, 236)";
-                bunka.style.color = 'rgb(240, 231, 231)';
+        if (i >= firstDayOfMonth && i < daysInMonth + firstDayOfMonth) {
+            cell.textContent = i - firstDayOfMonth + 1;
+            if (cell.textContent == currentDay) {
+                cell.style.backgroundColor = "rgb(97, 97, 236)";
+                cell.style.color = 'rgb(240, 231, 231)';
             }
         } else {
-            bunka.textContent = "🎲";
-            bunka.style.backgroundColor = '#ceccc1';
+            let prevMonthDays = new Date(currentYear, currentMonth, 0).getDate();
+            if (i < firstDayOfMonth) {
+                cell.textContent = prevMonthDays - (firstDayOfMonth - i - 1);
+                cell.style.backgroundColor = '#a9a9a9';
+            } else {
+                cell.textContent = i - daysInMonth - firstDayOfMonth + 1;
+                cell.style.backgroundColor = '#a9a9a9';
+            }
         }
 
-
-        radek.appendChild(bunka);
+        row.appendChild(cell);
     }
 
-    let aktualniMesicRok = document.createElement('h1');
-    aktualniMesicRok.textContent = `${mesice[aktualniMesic]} 🎲 ${aktualniRok}`;
+    let currentMonthYear = document.createElement('h1');
+    currentMonthYear.textContent = `${months[currentMonth]}  ${currentYear}`;
 
-    let clanek = document.createElement('p');
-    clanek.textContent = ' Vítejte na naší stránce s kalendářem! Tento kalendář vám pomůže sledovat aktuální měsíc a dny v týdnu. Můžete si prohlédnout, který den je dnes, a také vidět, kolik dní zbývá do konce měsíce. Doufáme, že vám tento kalendář bude užitečný a usnadní vám plánování vašich aktivit.'
-    let clanekKontainer = document.createElement('div');
-    clanekKontainer.setAttribute('class', 'clanek-kontejner');
-    clanekKontainer.appendChild(clanek);
+    let article = document.createElement('p');
+    article.textContent = 'Welcome to our calendar page! This calendar will help you keep track of the current month and days of the week. You can see which day is today and also see how many days are left until the end of the month. We hope this calendar will be useful and make it easier for you to plan your activities.';
+    let articleContainer = document.createElement('div');
+    articleContainer.setAttribute('class', 'article-container');
+    articleContainer.appendChild(article);
 
-    let kontainerKalendar = document.createElement('div');
-    kontainerKalendar.setAttribute('class', 'kalendar-kontejner');
-    kontainerKalendar.appendChild(aktualniMesicRok);
-    kontainerKalendar.appendChild(tabulkaProMesic);
+    let calendarContainer = document.createElement('div');
+    calendarContainer.setAttribute('class', 'calendar-container');
+    calendarContainer.appendChild(currentMonthYear);
+    calendarContainer.appendChild(tableForMonth);
 
-    document.body.appendChild(clanekKontainer);
-    document.body.appendChild(kontainerKalendar);
+    document.body.appendChild(articleContainer);
+    document.body.appendChild(calendarContainer);
 
 });

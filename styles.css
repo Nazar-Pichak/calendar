@@ -33,7 +33,7 @@ body {
     background-attachment: fixed;
 }
 
-.clanek-kontejner {
+.article-container {
     width: 400px;
     height: 408px;
     transition: all 1s ease-out;
@@ -79,7 +79,7 @@ table {
     border-collapse: collapse;
     border: 0.5px solid rgb(90, 87, 87);
     box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
-    opacity: 0.93;
+    opacity: 0.98;
 }
 
 @media (min-width: 1350px) {
@@ -93,7 +93,7 @@ table {
         font-size: 20px;
     }
 
-    .clanek-kontejner {
+    .article-container {
         height: 566px;
     }
 
@@ -103,13 +103,14 @@ table {
 }
 
 
+
 @media (max-width: 800px) {
     th, td {
         width: 40px;
         height: 40px;
     }
 
-    .clanek-kontejner {
+    .article-container {
         height: 338px;
     }
 
@@ -126,7 +127,7 @@ table {
         gap: 20px;
     }
 
-    .clanek-kontejner {
+    .article-container {
         width: 280px;
         order: 2;
     }
@@ -142,7 +143,7 @@ table {
         height: 35px;
     }
 
-    .clanek-kontejner {
+    .article-container {
         width: 246px;
         order: 2;
     }
